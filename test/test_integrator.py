@@ -10,8 +10,8 @@ class IntegratorTest(unittest.TestCase):
     def setUpClass(cls):
         cls.spark : SparkSession = (SparkSession.builder.master("local")
                                     .getOrCreate())
-    def tearDownClass(cls):
-        cls.spark.stop()
+ #   def tearDownClass(cls):
+  #      cls.spark.stop()
     def test_integrator(cls):
         factory =IntegratorFactory(cls.spark)
         integrator = factory.create_integrator("EX")

@@ -1,4 +1,6 @@
 from typing import Dict
+import os
+
 
 from pyspark.sql import SparkSession,DataFrame
 
@@ -7,7 +9,7 @@ class DataFrameCache:
     _cache:Dict[str,DataFrame]
     def __init__(self,spark:SparkSession):
         self.spark = spark
-    def get_dataframe(self,key:str=None,schema=None,path:str="C:\\Users\\Administrateur\\Documents\\formation\\pythonProject3\\test\\data\\exemple.json")-> DataFrame:
+    def get_dataframe(self,key:str=None,schema=None,path:str=os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')) + "\\test\\data\\exemple.json")-> DataFrame:
         return self.spark.read.json(path)
     def get_dataframe_catalog(self,key:str,table:str)-> DataFrame:
         pass
